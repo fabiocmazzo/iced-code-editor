@@ -13,8 +13,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   for languages syntect and `two-face` do not ship. Call it at startup, before the first editor highlights
   text (the set is built once per process); later calls return `SyntaxRegistrationError::AlreadyBuilt`,
   and an invalid definition returns `SyntaxRegistrationError::Parse` without registering any. Registered
-  syntaxes are chosen by `file_extensions`, can include bundled ones by scope, and win over a bundled
-  syntax that claims the same extension. With nothing registered, the set is built exactly as before.
+  syntaxes are chosen by `file_extensions` and looked up before the bundled ones. They form a set of
+  their own, so building it stays cheap: they include each other by scope, not the bundled ones. With
+  nothing registered, highlighting is exactly as before.
 
 ## [0.5.2] - 2026-09-01
 

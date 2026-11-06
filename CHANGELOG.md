@@ -16,6 +16,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   whitespace before it is skipped, and at a line boundary the move crosses into the
   neighbouring line. New messages: `WordLeft(bool)`, `WordRight(bool)`,
   `DeleteWordBack`, `DeleteWordForward`.
+- feat: `register_syntaxes` adds `.sublime-syntax` definitions to the set every editor highlights with,
+  for languages syntect and `two-face` do not ship. Call it at startup, before the first editor highlights
+  text (the set is built once per process); later calls return `SyntaxRegistrationError::AlreadyBuilt`,
+  and an invalid definition returns `SyntaxRegistrationError::Parse` without registering any. Registered
+  syntaxes are chosen by `file_extensions`, can include bundled ones by scope, and win over a bundled
+  syntax that claims the same extension. With nothing registered, the set is built exactly as before.
 
 ### Changed
 

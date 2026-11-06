@@ -516,6 +516,21 @@ for theme in iced::Theme::ALL {
 }
 ```
 
+### Adding syntaxes
+
+Languages that syntect (or `two-face`) does not ship can be added at startup, in Sublime Text's
+`.sublime-syntax` format. A registered syntax is picked by its `file_extensions`, like the bundled ones;
+it can include bundled syntaxes by scope (`include: scope:source.rust`), and the one registered last wins
+when two claim the same extension.
+
+```rust
+// Before the first editor highlights text: the syntax set is built once per process.
+let zx = std::fs::read_to_string("syntaxes/zx.sublime-syntax")?;
+iced_code_editor::register_syntaxes([zx.as_str()])?;
+
+let editor = iced_code_editor::CodeEditor::new(source, "zx");
+```
+
 ### Getting and Setting Content
 
 ```rust

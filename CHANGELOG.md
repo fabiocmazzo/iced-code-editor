@@ -160,6 +160,10 @@ Several of these changes port fixes and ideas first made in the
   ([#34](https://github.com/LuDog71FR/iced-code-editor/issues/34)).
 - feat: word-wise navigation and deletion, as in VS Code, JetBrains and Sublime Text
   ([#37](https://github.com/LuDog71FR/iced-code-editor/pull/37)).
+- feat: diagnostic underlines with `CodeEditor::set_diagnostics`. The new `Diagnostic` and
+  `DiagnosticSeverity` types describe LSP ranges and their severity; error, warning, information
+  and hint colors come from the active theme. Underlines follow visual lines when wrapping is on.
+- feat: word-wise navigation and deletion, as in VS Code, JetBrains and Sublime Text.
   `Ctrl+Left`/`Ctrl+Right` move one word (`Shift` extends the selection),
   `Ctrl+Backspace`/`Ctrl+Delete` delete one word (or the selection, if any). On macOS
   the modifier is `Alt`. A word is a run of identifier characters or of punctuation;

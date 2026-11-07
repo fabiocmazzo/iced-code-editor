@@ -56,6 +56,14 @@ pub struct Style {
     pub bracket_match_color: Color,
     /// Background fill color for the IME preedit (composition) region
     pub ime_preedit_background_color: Color,
+    /// Underline color for error diagnostics
+    pub diagnostic_error_color: Color,
+    /// Underline color for warning diagnostics
+    pub diagnostic_warning_color: Color,
+    /// Underline color for information diagnostics
+    pub diagnostic_information_color: Color,
+    /// Underline color for hint diagnostics
+    pub diagnostic_hint_color: Color,
 }
 
 /// The theme catalog of a code editor.
@@ -237,6 +245,10 @@ pub fn from_iced_theme(theme: &iced::Theme) -> Style {
         selection_color,
         bracket_match_color,
         ime_preedit_background_color,
+        diagnostic_error_color: palette.danger.base.color,
+        diagnostic_warning_color: palette.warning.base.color,
+        diagnostic_information_color: palette.primary.base.color,
+        diagnostic_hint_color: palette.secondary.base.color,
     }
 }
 

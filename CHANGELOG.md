@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- feat: diagnostic underlines with `CodeEditor::set_diagnostics`. The new `Diagnostic` and
+  `DiagnosticSeverity` types describe LSP ranges and their severity; error, warning, information
+  and hint colors come from the active theme. Underlines follow visual lines when wrapping is on.
 - feat: word-wise navigation and deletion, as in VS Code, JetBrains and Sublime Text.
   `Ctrl+Left`/`Ctrl+Right` move one word (`Shift` extends the selection),
   `Ctrl+Backspace`/`Ctrl+Delete` delete one word (or the selection, if any). On macOS

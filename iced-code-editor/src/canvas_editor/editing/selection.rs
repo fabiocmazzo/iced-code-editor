@@ -12,6 +12,17 @@ impl CodeEditor {
         self.overlay_cache.clear();
     }
 
+    /// The primary cursor's selection as `(line, column)` pairs, 0-based, in document order (start before end).
+    /// `None` without a selection.
+    pub fn selection_range(&self) -> Option<((usize, usize), (usize, usize))> {
+        self.get_selection_range()
+    }
+
+    /// The text selected by the primary cursor, or `None` without a selection.
+    pub fn selected_text(&self) -> Option<String> {
+        self.get_selected_text()
+    }
+
     /// Returns the primary cursor's selected text range in normalized order (start before end).
     pub(crate) fn get_selection_range(
         &self,
